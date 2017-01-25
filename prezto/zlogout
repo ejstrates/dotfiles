@@ -1,0 +1,18 @@
+#
+# Executes commands at logout.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# deactivate virtualenvwrapper venvs
+# need to disable temp venvs in order to clean them up; ensure they are deactivated
+# on shell logout
+[ "$VIRTUAL_ENV" ] && deactivate
+
+# Print the message.
+cat <<-EOF
+
+Thank you. Come again!
+  -- Dr. Apu Nahasapeemapetilon
+EOF

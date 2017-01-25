@@ -1,0 +1,43 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# When completion tries to correct, make the original entry the default selection
+zstyle ':completion:*' group-order original corrections
+
+# Customize to your needs...
+
+echo '\r\n'
+
+figlet -f cyberMedium "divideByZero"
+
+echo '\r\n'
+
+function python () {
+    test -z "$1" && ipython || command python "$@"
+}
+
+function pylint () {
+    command python =pylint "$@"
+}
+
+# iterm2 window name
+export DISABLE_AUTO_TITLE="true"
+
+function winname () {
+    echo -ne "\e]2;$1\a"
+}
+
+# virtualenvwrapper
+source /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.sh
+export PROJECT_HOME=~/aether/workspace
+VIRTUALENVWRAPPER_WORKON_CD=0
+VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--system-site-packages'
